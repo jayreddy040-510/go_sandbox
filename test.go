@@ -5,6 +5,7 @@ import(
 	"bufio"
 	"os"
 	"log"
+	"reflect"
 )
 
 var pl = fmt.Println
@@ -18,5 +19,7 @@ func main() {
 	} else {
 		log.Fatal(err)
 	};
+	pl(reflect.TypeOf(25))
+	pl(reflect.TypeOf(3.14))
 }
 
