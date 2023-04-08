@@ -14,7 +14,6 @@ var pl = fmt.Println
 
 func main() {
    reader := bufio.NewReader(os.Stdin)
-   pl("readerType", reflect.TypeOf(reader))
    iAge, err := reader.ReadString('\n')
    if err != nil {
    	log.Fatal(err)
@@ -31,6 +30,7 @@ func main() {
    } else {
 	pl("not important bday")
    }
+   pl(reflect.TypeOf("\n"), reflect.TypeOf('\n'))
 }
 
 
