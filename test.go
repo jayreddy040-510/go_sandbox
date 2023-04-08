@@ -7,6 +7,7 @@ import(
 	"reflect"
 	"strconv"
 	"log"
+	"strings"
 )
 
 var pl = fmt.Println
@@ -18,6 +19,7 @@ func main() {
    if err != nil {
    	log.Fatal(err)
    }
+   iAge = strings.TrimSuffix(iAge, "\n")
    iAgeInt, err2 := strconv.Atoi(iAge)
    if err2 != nil {
    	log.Fatal(err2)
