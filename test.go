@@ -4,26 +4,31 @@ import(
 	"fmt"
 	"bufio"
 	"os"
-	"log"
 	"reflect"
 	"strconv"
+	"log"
 )
 
 var pl = fmt.Println
 
 func main() {
-	pl("What is your name?")
-	reader := bufio.NewReader(os.Stdin)
-	name, err := reader.ReadString('\n')
-	if err == nil {
-		pl("Hello", name)
-	} else {
-		log.Fatal(err)
-	};
-	pl(reflect.TypeOf(25))
-	pl(reflect.TypeOf(3.14))
-	vv5, err := strconv.Atoi("500000")
-	pl(vv5, err, reflect.TypeOf(vv5))
-	pl(strconv.Itoa(55))
+   reader := bufio.NewReader(os.Stdin)
+   pl("readerType", reflect.TypeOf(reader))
+   iAge, err := reader.ReadString('\n')
+   if err != nil {
+   	log.Fatal(err)
+   }
+   iAgeInt, err2 := strconv.Atoi(iAge)
+   if err2 != nil {
+   	log.Fatal(err2)
+   }
+   if (iAgeInt >= 1) && (iAgeInt <= 18){
+	pl("Important Birthday")
+   } else if (iAgeInt == 21) || (iAgeInt == 50) {
+	pl("Important Birthday 21 or 50")
+   } else {
+	pl("not important bday")
+   }
 }
+
 
