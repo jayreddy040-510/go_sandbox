@@ -18,7 +18,7 @@ func main() {
 
     arr := []string{"one", "two", "three"}
 
-    for i, str := range arr {
-     fmt.Println(i, str)
+    for _, str := range arr {
+     fmt.Println(str)
     }
 }
