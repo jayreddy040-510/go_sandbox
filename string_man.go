@@ -9,7 +9,7 @@ var pl = fmt.Println
 
 func main() {
 	stringVar1 := "A word's word"
-	untrimStr := "\nI\nAm\nNot\nTrimmed\n"
+	untrimStr := "\nIAmNotTrimmed\n"
 	
 	// replacer pattern better for multiple replacements, call strings.Replace() for few replacements
 	replacer := strings.NewReplacer("word", "alligator")
@@ -30,4 +30,9 @@ func main() {
 
 	fmt.Println("stringVar1 lowered:", strings.ToLower(stringVar1))
 	fmt.Println("stringVar1 uppered:", strings.ToUpper(stringVar1))
+
+	// prefix/suffix bools
+	fmt.Println("Prefix for stringVar1 == A?:", strings.HasPrefix(stringVar1, "A"))
+	fmt.Println("Prefix for stringVar1 == B?:", strings.HasPrefix(stringVar1, "B"))
+	fmt.Println("Suffix for stringVar1 == word?:", strings.HasSuffix(stringVar1, "word"))
 }
