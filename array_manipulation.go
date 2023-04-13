@@ -8,4 +8,6 @@ func main () {
         fmt.Println(val)
     }
 
+    var aRay [5]int
+    fmt.Println(aRay[0], aRay[4])
 }
