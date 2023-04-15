@@ -7,52 +7,34 @@ import (
 func main() {
 	fmt.Println(romanToInt("XVIIIXLCM"))
 }
-
 func romanToInt(s string) int {
-	ret := 0
-	for idx, char := range s {
-		if char == 'I' {
-			if idx < len(s)-1 {
-				x := s[idx+1]
-				if x == 'V' || x == 'X' {
-					ret--
-				} else {
-					ret += 1
-				}
-			} else {
-				ret++
-			}
-		} else if char == 'V' {
-			ret += 5
-		} else if char == 'X' {
-			if idx < len(s)-1 {
-				x := s[idx+1]
-				if x == 'L' || x == 'C' {
-					ret -= 10
-				} else {
-					ret += 10
-				}
-			} else {
-				ret += 10
-			}
-		} else if char == 'L' {
-			ret += 50
-		} else if char == 'C' {
-			if idx < len(s)-1 {
-				x := s[idx+1]
-				if x == 'D' || x == 'M' {
-					ret -= 100
-				} else {
-					ret += 100
-				}
-			} else {
-				ret += 100
-			}
-		} else if char == 'D' {
-			ret += 500
-		} else if char == 'M' {
-			ret += 1000
-		}
-	}
-	return ret
+    ret := 0
+    // is it more performant to use make() syntax and pass capacity to prevent
+    // mem reallocations or is it more performant to pass the initial map via
+    // literal syntax so map is created at compile time?
+    subtractionValuesMap := map[string]bool{
+        "IV": true,
+        "IX": true,
+        "XL": true,
+        "XC": true,
+        "CD": true,
+        "CM": true}
+    valuesMap := map[byte]int{
+        'I':1,
+        'V':5,
+        'X':10,
+        'L':50,
+        'C':100,
+        'D':500,
+        'M':1000}
+    for idx:=0; idx < len(s)-1; idx++ {
+        twoChar := s[idx:idx+2]
+        if _,ok := subtractionValuesMap[twoChar]; ok {
+            ret -= valuesMap[byte(twoChar[0])]
+        } else {
+            ret += valuesMap[byte(twoChar[0])]
+        }
+    }
+    ret += valuesMap[byte(s[len(s)-1])]
+    return ret
 }
